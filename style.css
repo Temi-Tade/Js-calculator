@@ -1,0 +1,295 @@
+ * {
+   line-height: 1.7;
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+   user-select: none;
+   letter-spacing: 1.2px
+ }
+ 
+ html{
+ 	height: 100%;
+ }
+ 
+ body {
+   background: #333;
+   height: 100%;
+ }
+ 
+summary, summary:focus{
+  width: 90%;
+  outline: none;
+  margin: 16px 1px;
+  text-align: left
+}
+ 
+ .options{
+   padding: 4px;
+   margin: 0;
+   margin-bottom: 12px;
+   display: flex;
+   height: 50px;
+   width: 50px;
+   border-radius: 50%;
+   background: #fff;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+ }
+ 
+.closebtn{
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  font-weight: 20;
+  border: none;
+  float: right;
+  padding: 0;
+  margin: 0;
+}
+
+.closebtn:focus, .closebtn:hover{
+  background: #fe2323dd;
+}
+ 
+.panel{
+  top: 0;
+  box-shadow: 1px 1px 6px 1px #333;
+  position: absolute;
+  width: 410px;
+  background: #333333dd;
+  margin: 0;
+  text-align: left;
+  color: #dfdfdf;
+  max-width: 0px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  transition: all 1s;
+  height: 750px;
+}
+
+.panel .switch{
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+}
+
+.switch input{
+  display: none;
+}
+
+.switch .slider{
+  background: #000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 16px;
+}
+
+.switch .slider:before{
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: .4s;
+}
+
+.show{
+  display: none;
+}
+
+input:checked + .slider{
+  background: #1234de;
+}
+
+input:checked + .slider:before{
+  transform: translateX(12px);
+}
+  
+.panel table{
+  color: #fdfdfd;
+}
+
+.panel a{
+  text-decoration: none;
+  color: #0123fd;
+  font-size: 1em;
+}
+
+.panel select, .panel select:focus{
+  display: block;
+  width: 80%;
+  margin: auto;
+  height: 40px;
+  background: inherit;
+  color: #fdfdfd;
+  border: none;
+  border-bottom: 1px solid #fdfdfd;
+  outline: none;
+}
+
+.panel .clearM{
+  border: none;
+  background: #FF0030;
+  color: #fff;
+  display: block;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+}
+
+#page {
+   height: 100%;
+   display: flex;
+   width: 100%;
+   margin: auto;
+   background: #B8BEC8;
+   border: 1.5px inset #fff;
+   box-shadow: 1px 1px 6px 1px #000;
+   padding: 20px 15px;
+   line-height: 600px;
+   vertical-align: middle
+ }
+ 
+.time{
+  background: #fff;
+  font-weight: 300;
+  font-size: 1.2em;
+  width: 60%;
+  padding: 7px;
+  margin: 4px;
+  float: right;
+}
+ 
+ #container {
+ 	border: 1px solid blue;
+ 	display: grid;
+ 	grid-template-rows: .5fr .5fr .5fr 3fr
+ }
+ 
+ #header{
+ 	border: 1px solid white;
+ }
+ 
+ 
+ #screen-wrap{
+ 	border: 1px solid ;
+ }
+ 
+ #screen {
+   width: 100%;
+   height: 100%;
+   padding: 6px;
+   margin: auto;
+   font-size: 1.25rem;
+   text-align: justify;
+   background: #fff;
+   color: #333;
+   overflow-x: scroll;
+   overflow-y: hidden;
+ }
+ 
+ #ans{
+ 	background: transparent;
+ 	width: 100%;
+ 	font-size: 1.5rem
+ }
+ 
+ span#result {
+   text-align: right;
+   display: block;
+   color: #333;
+   font-weight: bold;
+   font-size: 1.75rem;
+   font-style: italic;
+   width: 100%;
+   height: 50px;
+   border: 1px solid cyan;
+   padding: 6px;
+   margin: auto;
+   margin-top: 5rem
+ }
+ 
+ #settings{
+ 	border: 1px solid yellow;
+ 	height: 100px;
+}
+ 
+ #btns {
+   padding: 5px;
+   padding-top: 1rem;
+   border: 1px solid green;
+   display: flex;
+   justify-content: center
+}
+
+#nums {
+	border: 1px solid red;
+	width: 60%;
+	height: 100%;
+	padding-top: .5rem;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#nums button:not(.last){
+	width: 30%;
+	height: 100px;
+	font-size: 2rem
+}
+
+ #sym{
+ 	border: 1px solid orangered;
+ 	padding-top: .5rem;
+ 	padding-left: 0;
+ 	padding-right: 0;
+ 	width: 40%;
+ }
+ 
+ #sym button:not(.last){
+	width: 45%;
+	height: 100px;
+	font-size: 2rem
+ }
+ 
+ button {
+   padding: 7px;
+   width: 4em;
+   height: 60px;
+   font-size: 1.2em;
+   font-stretch: 20px;
+   border: 0.1px inset;
+   font-weight: 350;
+   background: #333;
+   color: #FFF;
+   margin: 4px 2px;
+ }
+ 
+ button:focus {
+   outline: none;
+ }
+ 
+ .clear {
+   background: #f12;
+   color: #fff;
+ }
+ 
+ .del {
+   background: #02f;
+ }
+ 
+ .last{
+ 	width: 100%;
+ 	font-size: 2rem
+ }
+ 
+ #dot{
+   font-weight: normal;
+ }

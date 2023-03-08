@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS CALCULATOR</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body align="center">
+   
+  <div class="panel">
+    <button class="closebtn">X</button><br>
+    <h3 style="text-align: center">JS calculator</h3>
+    <hr>
+    
+    <!--
+    <details>
+      <summary>
+        PREFERENCES
+      </summary>
+      <label>Font:</label>
+      <select name="font" id="font">
+        <option value="Serif">Serif</option>
+        <option value="San-serif">San-serif</option>
+        <option value="Cursive">Cursive</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Monospace">Monospace</option>
+      </select>
+      <label>Theme:</label>
+      <select name="theme" id="theme" onchange="myTheme()">
+        <option value="Default">Default</option>
+        <option value="Light">Light</option>
+        <option value="Dark">Dark</option>
+        <option value="Matrix">Matrix</option>
+        <option value="Classic">Classic</option>
+      </select> 
+      -->
+      Display Time:
+      <label class="switch">
+        <input type="checkbox" name="toggle" id="toggle" checked oninput="toggle()">
+        <div class="slider"></div>
+      </label>
+    </details>
+    
+    <details>
+      <summary>
+        ABOUT
+      </summary>
+      JS calculator is a simple, mobile-first calculator designed to help with basic mathematical calculations on the web. For the purpose of knowing, it was designed with pure HTML, CSS and JavaScript. Below are some guides to using it.
+      <hr>
+      &COPY; 2022 All rights reserved.
+    </details>
+    
+    <details>
+      <summary>
+        CREDITS
+      </summary>
+      <p>To God Almighty</p>
+      <p>Developer: Temiloluwa Akintade</p>
+      <p><a href="mailto:codinglabz20@gmail.com">codinglabz20@gmail.com</a></p>
+    </details>
+  </div>
+  
+  <div id="page">
+    <div id="container">
+    	<div id="header">
+    		<button class="options"><img src="option_icon.png" style="width: 35px; height: 35px; border-radius: 50%; float: right"></button>
+    	
+    		<div id="currenttime" class="time"></div>
+    	</div>
+    	
+    	<div id="screen-wrap">
+    		<div id="screen">
+        		<input type="text" disabled id="ans"><br>
+        		<span id="result"></span>
+    		</div>
+    	</div>
+    	
+    	<div id="settings"></div>
+      
+      
+        <div id="btns">
+        	<div id="nums">
+		    	<button class="num" onclick="insert(1)">1</button>
+		        <button class="num" onclick="insert(2)">2</button>
+		        <button class="num" onclick="insert(3)">3</button>
+		        <button class="num" onclick="insert(4)">4</button>
+		        <button class="num" onclick="insert(5)">5</button>
+		        <button class="num" onclick="insert(6)">6</button>
+		        <button class="num" onclick="insert(7)">7</button>
+		        <button class="num" onclick="insert(8)">8</button>
+		        <button class="num" onclick="insert(9)">9</button>
+		        <button class="del" onclick="del()">Del</button>
+		        <button class="num" onclick="insert(0)">0</button>
+		        <button class="clear" onclick="clear_all()">AC</button>
+				<button class="last" onclick="ans()" style="width: 40%">Ans</button>
+				<button class="clearM" style="width: 40%; height: 60px">MC</button>
+        	</div>
+        	
+        	
+        	<div id="sym">
+		    	<button id="dot">.</button>
+		        <button id="add">+</button>
+		        <button id="subtract">-</button>
+		        <button id="product">&times;</button>
+		        <button id="divide">÷</button>
+		        <button id="power">^</button>
+		        <button id="openbrac">(</button>
+		        <button id="closebrac">)</button>
+		        <button class="last" onclick="calc()">=</button>
+        	</div>
+          </div>
+          
+    </div>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
