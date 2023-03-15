@@ -1,0 +1,146 @@
+#closebtn{
+	  width: 50px;
+	  height: 50px;
+	  background: transparent;
+	  font-weight: 20;
+	  border: none;
+	  float: right;
+	  padding: 0;
+	  margin: 0;
+	}
+	
+	#closebtn:focus, #closebtn:hover{
+	  background: #fe2323dd;
+	}
+	 
+	 .panel-bg{
+	 	background: #3337;
+	 	position: fixed;
+	 	width: 100%;
+	 	top: 0;
+	 	left: 0;
+	 	right: 0;
+	 	bottom: 0;
+	 	display: non;
+	 }
+	 
+	#panel{
+	  bottom: 0;
+	  box-shadow: 1px 1px 6px 1px #333;
+	  position: absolute;
+	  width: 100%;
+	  background: #333333;
+	  margin: 0;
+	  text-align: left;
+	  color: #dfdfdf;
+	  overflow-x: auto;
+	  overflow-y: scroll;
+	  transition: all 1s;
+	  height: 30rem;
+	}
+	
+	#panel-header{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 1.5px inset #ccc;
+	}
+	
+	#panel-header ul{
+		display: flex;
+		width: 90%;
+		justify-content: space-around;
+		height: 3rem
+	}
+	
+	#panel-header li{
+		width: 25%;
+		
+	}
+	
+	#panel-body{
+		padding: .25rem;
+		width: 100%;
+	}
+	
+#panel-body ul{
+	width: 100%;
+}
+
+#panel-body li{
+	width: 100%;
+	display: flex;
+	border: 1px solid white;
+	justify-content: space-between;
+	padding: .75rem;
+	position: relative
+}
+
+	#panel label{
+		width: 100%;
+		position: relative;
+		height: 100%;
+		display: inline-block
+	}
+	
+	/*toggler style*/
+	#panel .switch{
+	  position: relat;
+	  display: block;	
+	  width: 30px;
+	  height: 20px;
+	}
+	
+	#panel input{
+		display: none;
+	}
+	
+	#panel label div{
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: .5s ease-in-out;
+	}
+	
+	#panel input:checked + div{
+		border: 1.5px solid #ccc;
+		font-weight: bold;
+		background: #ccc;
+		color: #333;
+	}
+	
+	.switch .slider{
+	  background: #000;
+	  position: absolute;
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  border-radius: 16px;
+	}
+	
+	.switch .slider:before{
+	  content: "";
+	  width: 12px;
+	  height: 12px;
+	  border-radius: 50%;
+	  background: #fff;
+	  position: absolute;
+	  top: 4px;
+	  left: 4px;
+	  transition: .4s;
+	}
+	
+	.show{
+	  display: none;
+	}
+	
+	input:checked + .slider{
+	  background: #1234de;
+	}
+	
+input:checked + .slider:before{
+	transform: translateX(12px);
+}
+	
