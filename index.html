@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body>
+<body onload="calculator.loadAppData()">
 	<div class="panel-bg">
 		<div id="panel">
 			<div id="panel-header">
@@ -46,12 +46,14 @@
 						</label>
 					</li>
 				</ul>
+				
 				<button id="closebtn">
 					<i class="fas fa-times"></i>
 				</button>
 			</div>
 			
 			<div id="panel-body">
+				<div class="tab">
 				<ul type="none">
 					<li>
 						<p>Display time:</p>
@@ -61,22 +63,70 @@
 						</label>
 					</li>
 					
-					<li>
-						<p>Vibrate on button press</p>
+					<li id="sound">
+						<p>Play sound on button press</p>
 						<label class="switch">
-							<input type="checkbox" name="toggle" id="toggleVib" oninput="toggleVib()">
+							<input type="checkbox" name="toggle" id="toggleSound" oninput="toggleSound(this)">
 							<p class="slider"></p>
 						</label>
 					</li>
 					
+					<!--Themes-->
+					<li id="theme-list">
+						<p>Theme</p>
+							<ul type="none" class="themes">
+								<li>
+									<label>
+										<input type="radio" name="theme">
+										<div>Light</div>
+									</label>
+								</li>
+							
+								<li>
+									<label>
+										<input type="radio" name="theme">
+										<div>Dark</div>
+									</label>
+								</li>
+							
+							<li>
+								<label>
+									<input type="radio" name="theme">
+									<div>Matrix</div>
+								</label>
+							</li>
+							
+							<li>
+								<label>
+									<input type="radio" name="theme">
+									<div>Custom</div>
+								</label>
+							</li>
+						</ul>
+					</li>
+					
 					<li>
-						<p>Play sound on button press</p>
-						<label class="switch">
-							<input type="checkbox" name="toggle" id="toggleSound" oninput="toggleSound()">
-							<p class="slider"></p>
-						</label>
+						<p>Font size</p>
+						<input type="range" min="1" max="1.5" step=".25">
+					</li>
+					
+					<li id="last-li">
+						<button id="clearAppDataBtn">Clear App Data</button>
 					</li>
 				</ul>
+				</div>
+				
+				<div class="tab">
+					history 
+				</div>
+				
+				<div class="tab">
+					about
+				</div>
+				
+				<div class="tab">
+					more
+				</div>
 			</div>
 		</div>
 	</div>
@@ -145,14 +195,14 @@
         	
         	
         	<div id="sym">
-		    	<button id="dot">.</button>
-		        <button id="add">+</button>
-		        <button id="subtract">-</button>
-		        <button id="product">&times;</button>
-		        <button id="divide">÷</button>
-		        <button id="power">^</button>
-		        <button id="openbrac">(</button>
-		        <button id="closebrac">)</button>
+		    	<button class="symbol" id="dot">.</button>
+		        <button class="symbol" id="add">+</button>
+		        <button class="symbol" id="subtract">-</button>
+		        <button class="symbol" id="product">&times;</button>
+		        <button class="symbol" id="divide">÷</button>
+		        <button class="symbol" id="power">^</button>
+		        <button class="symbol" id="openbrac">(</button>
+		        <button class="symbol" id="closebrac">)</button>
 		        <button class="last" onclick="solve()">=</button>
         	</div>
         </div>
@@ -162,8 +212,8 @@
   </div>
   
   
-  <script src="./scripts/calculator.js"></script>
-  <script src="./scripts/main.js"></script>
-  <script src="./scripts/settings.js"></script>
+  <script async defer src="./scripts/calculator.js"></script>
+  <script async defer src="./scripts/main.js"></script>
+  <script async defer src="./scripts/settings.js"></script>
 </body>
 </html>

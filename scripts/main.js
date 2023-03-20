@@ -25,13 +25,6 @@ memoryClearBtn.addEventListener('click', () => {
 	calculator.showToast('Memory Cleared')
 })
 
-//function to toggle time display 
-toggleTimeDisp = () => {
-  currentTime.classList.toggle('show')
-}
-
-//time and date
-
 	let count = () => {
 		var time = new Date()
 		var hrs = time.getHours();
@@ -46,6 +39,7 @@ toggleTimeDisp = () => {
 setInterval(count,1000)
 
 addition.onclick = function(){
+	alert()
   screen.value += '+'
 }
 sub.onclick = function() {
@@ -78,10 +72,9 @@ numBtn.forEach((num) => {
 
 let solve = () => {
 	if (screen.value.length === 0) {
-		navigator.vibrate(100)
+		navigator.vibrate()
 	}else{
 		answerDisplay.innerHTML = eval(screen.value)
-		calculator.lastAns
 		calculator.saveLastAns()
 		calculator.saveAppData()
 	}
@@ -97,8 +90,7 @@ let del = () => {
 }
 
 let ans = () => {
-	let appData = calculator.loadAppData()
-	screen.value += appData.lastAns
+	screen.value += calculator.loadAppData().lastAns
 }
 
 let clear_all = () => {

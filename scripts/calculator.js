@@ -4,7 +4,6 @@ class Calculator{
 		this.theme = null
 		this.fontSize = null
 		this.lastAns = null
-		this.vib = false
 		this.sound = false
 		this.displayTime = true
 		this.inputs = []
@@ -21,6 +20,16 @@ class Calculator{
 	}
 	
 	loadAppData(){
+		let state = JSON.parse(localStorage.getItem('calc_app_data'))
+		if (state.sound === true) {
+			document.querySelector('#sound').innerHTML = `
+				<p>Play on button press </p>
+					<label class = "switch">
+					<input type="checkbox" name="toggle" id="toggleVib" oninput="toggleVib(this)" checked>
+				<p class="slider"></p>
+			`
+		}
+		
 		return JSON.parse(localStorage.getItem('calc_app_data'))
 	}
 	
@@ -29,7 +38,8 @@ class Calculator{
 		this.saveAppData()
 	}
 	
-	saveOutput(){		this.saveAppData()
+	saveOutput(){		
+		this.saveAppData()
 	}
 	
 	showLogs(){
