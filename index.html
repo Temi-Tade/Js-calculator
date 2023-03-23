@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body onload="calculator.loadAppData()">
+<body >
 	<div class="panel-bg">
 		<div id="panel">
 			<div id="panel-header">
@@ -47,18 +47,18 @@
 					</li>
 				</ul>
 				
-				<button id="closebtn">
-					<i class="fas fa-times"></i>
+				<button id="closebtn" onclick="panelBg.style.display = 'none'">
+					&times;
 				</button>
 			</div>
 			
 			<div id="panel-body">
 				<div class="tab">
 				<ul type="none">
-					<li>
+					<li id="t">
 						<p>Display time:</p>
 						<label class="switch">
-							<input type="checkbox" name="toggle" id="toggleTimeDisp" checked oninput="toggleTimeDisp()" >
+							<input type="checkbox" name="toggle" id="toggleTime" checked oninput="toggleTimeDisp(this)" >
 							<p class="slider"></p>
 						</label>
 					</li>
@@ -140,7 +140,7 @@
 				  </div>
 				</div>
 				
-				<div id="currenttime" class="time"></div>
+				<div id="time" class="time"></div>
 			</div>
 			
 			<div id="screen-wrap">

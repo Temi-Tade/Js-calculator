@@ -1,6 +1,6 @@
-let calculator = new Calculator()
+checkTime()
+checkSound()
 
-//variables 
 var sidePanel = document.querySelector('#panel')
 var closeBtn = document.querySelector('#closebtn')
 var addition = document.getElementById('add')
@@ -14,88 +14,95 @@ var answerDisplay = document.getElementById('result')
 var exp = document.getElementById('power')
 var openBrace = document.getElementById('openbrac')
 var closeBrace = document.getElementById('closebrac')
-var currentTime = document.getElementById('currenttime')
-var memoryClearBtn = document.querySelector('#clearMemory')
+let memoryClearBtn = document.querySelector('#clearMemory')
 let toast = document.querySelector('#toast-container')
+let time = document.querySelector('#time')
 
-memoryClearBtn.addEventListener('click', () => {
-	calculator.loadAppData()
-	calculator.lastAns = ''
-	calculator.saveAppData()
-	calculator.showToast('Memory Cleared')
-})
-
-	let count = () => {
-		var time = new Date()
-		var hrs = time.getHours();
-		var minute = time.getMinutes()
-		var second = time.getSeconds()
-		var date = time.getDate()
-		var month = time.getMonth()+1
-		var year = time.getFullYear()
-		currentTime.innerHTML =  `${hrs} : ${minute} : ${second}; ${date} / ${month} / ${year}`
+count = () => {
+	var t = new Date()
+	var hrs = t.getHours();
+	var minute = t.getMinutes()
+	var second = t.getSeconds()
+	var date = t.getDate()
+	var month = t.getMonth()+1
+	var year = t.getFullYear()
+	time.innerHTML =  `${hrs} : ${minute} : ${second}; ${date} / ${month} / ${year}`
 }
-
 setInterval(count,1000)
-
+	
 addition.onclick = function(){
-	alert()
-  screen.value += '+'
+	clickSound()
+	screen.value += '+'
 }
 sub.onclick = function() {
-  screen.value += '-'
+	clickSound()
+	screen.value += '-'
 }
 multi.onclick = function() {
-  screen.value += '*'
+	clickSound()
+	screen.value += '*'
 }
 quotient.onclick = function() {
-  screen.value += '/'
+	clickSound()
+	screen.value += '/'
 }
 point.onclick = function() {
-  screen.value += '.'
+	clickSound()
+	screen.value += '.'
 }
 exp.onclick = function(){
-  screen.value += '**'
+	clickSound()
+	screen.value += '**'
 } 
 openBrace.onclick = function(){
-  screen.value += '('
+	clickSound()
+	screen.value += '('
 }
 closeBrace.onclick = function(){
-  screen.value += ')'
+	clickSound()
+	screen.value += ')'
 }
 
 numBtn.forEach((num) => {
 	num.addEventListener('click', () => {
+		clickSound()
 		screen.value += num.innerHTML
 	})
 })
 
 let solve = () => {
-	if (screen.value.length === 0) {
-		navigator.vibrate()
-	}else{
-		answerDisplay.innerHTML = eval(screen.value)
-		calculator.saveLastAns()
-		calculator.saveAppData()
-	}
+	clickSound()
+	answerDisplay.innerHTML = eval(screen.value)
+	state.lastAns = answerDisplay.innerText
+	saveAppData(state)
 }
 
 /*i converted the string to an array then used pop to remove the last value then converted back to string*/
 let del = () => {
-  var char = screen.value
-  var convArr = char.split('')
-  var delArr = convArr.pop()
-  var delArr = convArr.join('')
-  screen.value = delArr
+	clickSound()
+	var char = screen.value
+	var convArr = char.split('')
+	var delArr = convArr.pop()
+	var delArr = convArr.join('')
+	screen.value = delArr
 }
 
 let ans = () => {
-	screen.value += calculator.loadAppData().lastAns
+	clickSound()
+	screen.value += loadAppData().lastAns
 }
 
 let clear_all = () => {
-   var screen = document.getElementById('ans')
-   screen.value = "";
-   answerDisplay.innerHTML = ''
+	clickSound()
+	var screen = document.getElementById('ans')
+	screen.value = "";
+	answerDisplay.innerHTML = ''
 }
 
+memoryClearBtn.addEventListener('click', () => {
+	clickSound()
+	let state = loadAppData()
+	state.lastAns = ''
+	saveAppData(state)
+	showToast('Memory Cleared')
+})

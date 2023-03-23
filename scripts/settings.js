@@ -1,6 +1,3 @@
-'use strict'
-
-
 let optionBtns = document.querySelectorAll('#settings button')
 let panelBg = document.querySelector('.panel-bg')
 let panelBody = document.querySelector('#panel-body')
@@ -18,37 +15,59 @@ let showSettingsDialog = (x) => {
 	rads[x].checked = true
 }
 
+
 optionBtns.forEach((val, ind) => {
-	val.addEventListener('click', () => {
+	val.addEventListener('click', (x) => {
 		showSettingsDialog(ind)
-		panelBody.innerHTML = tabs[ind].innerHTML
+		checkTime()
+		checkSound()
+		tabs.forEach((v, i) => {
+			tabs[i].style.display = 'none'
+		})
+		tabs[ind].style.display = 'block'
 	})
 })
 
 rads.forEach((val, ind) => {
 	val.addEventListener('input', () => {
-		panelBody.innerHTML = tabs[ind].innerHTML
+		checkTime()
+		checkSound()
+		tabs.forEach((v, i) => {
+			tabs[i].style.display = 'none'
+		})
+		tabs[ind].style.display = 'block'
 	})
 })
 
-let toggleTimeDisp = () => {
-	calculator.loadAppData()
-	if (currentTime.style.display === 'none') {
-		currentTime.style.display = 'block'
-		calculator.displayTime = true
+let toggleTimeDisp = (x) => {
+	if (x.checked === true) {
+		time.style.display = 'block'
+		let state = loadAppData()
+		state.displayTime = true
+		saveAppData(state)
+		showToast('Date and Time: On')
 	} else {
-		currentTime.style.display = 'none'
-		calculator.displayTime = false
+		time.style.display = 'none'
+		let state = loadAppData()
+		state.displayTime = false
+		saveAppData(state)
+		showToast('Date and Time: Off')
 	}
-	calculator.saveAppData()
+	history.go(0)
 }
 
 let toggleSound = (x) => {
 	if (x.checked === true) {
-		calculator.sound = true
-		calculator.saveAppData()
+		let state = loadAppData()
+		state.playSound = true
+		saveAppData(state)
+		showToast('Sound: On')
 	} else {
-		calculator.sound = false
-		calculator.saveAppData()
+		let state = loadAppData()
+		state.playSound = false
+		saveAppData(state)
+		showToast('Sound: Off')
 	}
+	history.go(0)
 }
+
