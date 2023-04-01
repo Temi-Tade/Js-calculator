@@ -6,6 +6,17 @@ let tabs = document.querySelectorAll('.tab')
 let num_sym_btn = document.querySelectorAll('#btns button')
 
 let showSettingsDialog = (x) => {
+	let state = loadAppData()
+		state.times.forEach((val,ind) => {
+			document.querySelector("#logs").innerHTML += `
+			<tr>
+				<td>${state.times[ind]}</td>
+				<td>${state.inputs[ind]}</td>
+				<td>${state.outputs[ind]}</td>
+			</tr>
+			`
+		});
+
 	panelBg.style.display = 'block'
 	window.addEventListener('click', () => {
 		if (event.target === panelBg) {
@@ -19,8 +30,6 @@ let showSettingsDialog = (x) => {
 optionBtns.forEach((val, ind) => {
 	val.addEventListener('click', (x) => {
 		showSettingsDialog(ind)
-		checkTime()
-		checkSound()
 		tabs.forEach((v, i) => {
 			tabs[i].style.display = 'none'
 		})

@@ -1,6 +1,3 @@
-checkTime()
-checkSound()
-
 var sidePanel = document.querySelector('#panel')
 var closeBtn = document.querySelector('#closebtn')
 var addition = document.getElementById('add')
@@ -72,8 +69,12 @@ numBtn.forEach((num) => {
 
 let solve = () => {
 	clickSound()
+	let state = loadAppData()
 	answerDisplay.innerHTML = eval(screen.value)
 	state.lastAns = answerDisplay.innerText
+	state.times.push(time.innerText)
+	state.inputs.push(screen.value)
+	state.outputs.push(answerDisplay.innerText)
 	saveAppData(state)
 }
 

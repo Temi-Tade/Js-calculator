@@ -77,7 +77,7 @@
 							<ul type="none" class="themes">
 								<li>
 									<label>
-										<input type="radio" name="theme">
+										<input type="radio" name="theme" checked>
 										<div>Light</div>
 									</label>
 								</li>
@@ -111,13 +111,22 @@
 					</li>
 					
 					<li id="last-li">
-						<button id="clearAppDataBtn">Clear App Data</button>
+						<button id="clearAppDataBtn" class="cls">Clear App Data</button>
 					</li>
 				</ul>
 				</div>
 				
 				<div class="tab">
-					history 
+					<table width="100%" id="logs">
+						<caption>Calculation Logs</caption>
+
+						<tr>
+							<th>Time</th>
+							<th>Calculations</th>
+							<th>Results</th>
+						</tr>
+					</table>
+					<button id="clearLogs" class="cls">Clear Logs</button>
 				</div>
 				
 				<div class="tab">
@@ -173,7 +182,6 @@
     			</li>
     		</ul>
     	</div>
-      
       
         <div id="btns">
         	<div id="nums">

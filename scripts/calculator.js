@@ -8,7 +8,10 @@ if (localStorage.getItem('calc_app_data') === null) {
 		fontSize: null,
 		lastAns: null,
 		displayTime: false,
-		playSound: false
+		playSound: false,
+		inputs: [],
+		outputs: [],
+		times: []
 	}
 	localStorage.setItem('calc_app_data', JSON.stringify(calculator))
 } else {
@@ -56,6 +59,9 @@ if (localStorage.getItem('calc_app_data') === null) {
 			`
 		}
 	}
+	
+	checkTime()
+	checkSound()
 }
 
 let saveAppData = (x) => {
