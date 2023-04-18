@@ -1,8 +1,6 @@
 let optionBtns = document.querySelectorAll('#settings button')
 let panelBg = document.querySelector('.panel-bg')
-let panelBody = document.querySelector('#panel-body')
-let rads = document.querySelectorAll('#panel-header input[type=radio]')
-let tabs = document.querySelectorAll('.tab')
+let panelBody = document.querySelector('#panel-body'let tabs = document.querySelectorAll('.tab')
 let num_sym_btn = document.querySelectorAll('#btns button')
 
 let showSettingsDialog = (x) => {
@@ -80,3 +78,21 @@ let toggleSound = (x) => {
 	history.go(0)
 }
 
+document.querySelectorAll(".themes li input").forEach((val, ind) => {
+	val.addEventListener("input", () => {
+		let state = loadAppData()
+		switch (val.id) {
+			case "light":
+				document.querySelector("link#custom").href = ""
+				state.theme = "light"
+				saveAppData(state)
+				break;
+		
+			case "dark":
+				document.querySelector("link#custom").href = "./styles/darkmode.css"
+				state.theme = "dark"
+				saveAppData(state)
+				break;
+		}
+	})
+})

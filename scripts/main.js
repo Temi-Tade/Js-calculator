@@ -1,3 +1,4 @@
+//variables
 var sidePanel = document.querySelector('#panel')
 var closeBtn = document.querySelector('#closebtn')
 var addition = document.getElementById('add')
@@ -14,7 +15,11 @@ var closeBrace = document.getElementById('closebrac')
 let memoryClearBtn = document.querySelector('#clearMemory')
 let toast = document.querySelector('#toast-container')
 let time = document.querySelector('#time')
+let clearAppDataBtn = document.querySelector("#clearAppDataBtn")
+let clearLogsBtn = document.querySelector("#clearLogs")
+let mod = document.querySelector("#modal")
 
+//time and date function
 count = () => {
 	var t = new Date()
 	var hrs = t.getHours();
@@ -23,7 +28,8 @@ count = () => {
 	var date = t.getDate()
 	var month = t.getMonth()+1
 	var year = t.getFullYear()
-	time.innerHTML =  `${hrs} : ${minute} : ${second}; ${date} / ${month} / ${year}`
+	time.querySelector("#t").innerHTML =  `${hrs} : ${minute} : ${second}`
+	time.querySelector("#d").innerHTML = `${date} / ${month} / ${year}`
 }
 setInterval(count,1000)
 	
@@ -70,15 +76,22 @@ numBtn.forEach((num) => {
 let solve = () => {
 	clickSound()
 	let state = loadAppData()
+	let t = new Date()
+	var hrs = t.getHours();
+	var minute = t.getMinutes()
+	var second = t.getSeconds()
+	var date = t.getDate()
+	var month = t.getMonth()+1
+	var year = t.getFullYear()
 	answerDisplay.innerHTML = eval(screen.value)
 	state.lastAns = answerDisplay.innerText
-	state.times.push(time.innerText)
+	state.times.push(`${date} / ${month} / ${year} | ${hrs} : ${minute} : ${second}`)
 	state.inputs.push(screen.value)
 	state.outputs.push(answerDisplay.innerText)
 	saveAppData(state)
 }
 
-/*i converted the string to an array then used pop to remove the last value then converted back to string*/
+//Delete function; screen converted the string to an array then used pop to remove the last value then converted back to string
 let del = () => {
 	clickSound()
 	var char = screen.value
@@ -93,6 +106,7 @@ let ans = () => {
 	screen.value += loadAppData().lastAns
 }
 
+//clear screen
 let clear_all = () => {
 	clickSound()
 	var screen = document.getElementById('ans')
@@ -100,6 +114,12 @@ let clear_all = () => {
 	answerDisplay.innerHTML = ''
 }
 
+let displayModal = (content) => {
+	mod.style.display = "block"
+	mod.querySelector("#modal-text").innerHTML = content
+}
+
+//clear the calculator memory
 memoryClearBtn.addEventListener('click', () => {
 	clickSound()
 	let state = loadAppData()
@@ -107,3 +127,53 @@ memoryClearBtn.addEventListener('click', () => {
 	saveAppData(state)
 	showToast('Memory Cleared')
 })
+
+//clear app data
+clearAppDataBtn.addEventListener("click", () => {
+	displayModal(`
+	Warning! You are about to clear all app related data. This action cannot be undone. Click OK to continue.
+	`)
+
+	mod.querySelectorAll("button").forEach((val) => {
+		val.addEventListener("click", () => {
+			if (val.innerText === "OK") {
+				let state = loadAppData()
+				state.theme = null
+				state.lastAns = ""
+				state.displayTime = false
+				state.playSound = false
+				state.inputs = []
+				state.outputs = []
+				state.times = []
+				saveAppData(state)
+				history.go(0)
+			} else {
+				mod.style.display = "none"
+			}
+		})
+	})
+})
+
+//clear logs
+clearLogsBtn.addEventListener("click", () => {
+	displayModal(`
+	Warning! You are about to clear the calculatin logs. This action cannot be undone. Click OK to continue.
+	`)
+
+	mod.querySelectorAll("button").forEach((val) => {
+		val.addEventListener("click", () => {
+			if (val.innerText === "OK") {
+				let state = loadAppData()
+				state.inputs = []
+				state.outputs = []
+				state.times = []
+				saveAppData(state)
+				history.go(0)
+			} else {
+				mod.style.display = "none"
+			}
+		})
+	})
+})
+
+//moving to prior calculations

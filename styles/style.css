@@ -5,7 +5,7 @@
 	   box-sizing: border-box;
 	   padding: 0;
 	   margin: 0;
-	   user-select: none;
+	   user-select: none; 
 	   letter-spacing: 1.2px;
 	   font-family: sans-serif;
 	 }
@@ -15,33 +15,35 @@
 	 }
 	 
 	 body {
-	   background: #333;
-	   height: 100%;
+	   height: 100vh;
 	   position: fixed;
 	 }
 
 	#page {
 	   height: 100vh;
-	   display: flex;
 	   width: 100%;
 	   margin: auto;
-	   background: #EFEFEF;
-	   box-shadow: 1px 1px 6px 1px #000;
+	   background: #f0f0f0;
 	   padding: 20px 15px;
 	 }
 	 
-	.time{
-	  background: #fff;
+	#time{
+		width: 100%;
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
 	  font-weight: 300;
-	  font-size: 1.2em;
-	  width: 25rem;
-	  padding: 7px;
+	  font-size: 1.2rem;
+	  padding: 3px;
 	  margin: .25rem auto;
+	  height: 50px;
+	  font-style: italic;
+	  color: #333;
 	}
-	 
+
 	 #container {
 	 	display: grid;
-	 	grid-template-rows: .5fr .5fr .5fr 3fr
+	 	grid-template-rows: .25fr .5fr .5fr 3fr
 	 }
 	 
 	 #screen {
@@ -51,9 +53,9 @@
 	   margin: auto;
 	   font-size: 1.25rem;
 	   text-align: justify;
-	   background: #fff;
+	   background: #f9f9f9;
 	   color: #333;
-	   overflow-x: scroll;
+	   overflow-x: auto;
 	   overflow-y: hidden;
 	   border-radius: 6px;
 	   border: 1.5px solid #333;
@@ -92,6 +94,7 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		height: 3rem;
 	}
 	
 	#settings li{
@@ -99,19 +102,19 @@
 		flex-direction: column;
 		background: #333;
 		width: 20%;
-		height: 75px;
+		/* height: 100%; */
 		color: #FFF;
 		justify-content: space-around;
 		align-items: center;
-		padding: .25rem;
-		padding-top: 1rem;
 		border-radius: 6px
 	}
 	
 	#settings button{
 		width: 100%;
+		height: inherit;
 		font-size: .75rem;
 		border: 0;
+		padding: 1rem;
 	}
 	
 	#settings i{
@@ -122,7 +125,7 @@
 	   padding: 5px;
 	   padding-top: 1rem;
 	   display: flex;
-	   justify-content: center
+	   justify-content: center;
 	}
 	
 	#nums {
@@ -135,7 +138,7 @@
 	
 	#nums button:not(.last){
 		width: 30%;
-		height: 100px;
+		height: 90px;
 		font-size: 2rem
 	}
 	
@@ -148,21 +151,21 @@
 	 
 	 #sym button:not(.last){
 		width: 45%;
-		height: 100px;
+		height: 90px;
 		font-size: 2rem
 	 }
 	 
 	 button {
 	   padding: 7px;
 	   width: 10%;
-	   height: 60%;
 	   font-size: 5rem;
-	   border: 0.1px inset;
 	   font-weight: 350;
 	   background: #333;
 	   color: #FFF;
 	   margin: 4px 2px;
 	   border-radius: 6px;
+	   cursor: pointer;
+	   border: 0;
 	 }
 	 
 	 button:focus {
@@ -176,6 +179,7 @@
 	 
 	 .del {
 	   background: #02f;
+	   color: #eee
 	 }
 	 
 	 .last{
@@ -197,10 +201,10 @@
 	 	left: 0;
 	 	opacity: 0;
 	 	transition: 1s ease-in-out;
-	 	background: #333d;
+	 	background: #111d;
 	 	color: #ccc;
 	 	padding: .5rem 1rem;
 	 	text-align: center;
 	 	border-radius: .5rem;
-	 	z-index: -1;
+	 	z-index: 5;
 	 }

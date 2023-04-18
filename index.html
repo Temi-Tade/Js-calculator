@@ -6,15 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>JS CALCULATOR</title>
-  
+   
   <link rel="stylesheet" href="./styles/style.css">
   <link rel="stylesheet" href="./styles/panel.css">
+  <link rel="stylesheet" id="custom" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body >
 	<div class="panel-bg">
+		<div id="modal">
+			<div id="modal-text"></div>
+			<div id="actionbtns">
+				<button class="del">cancel</button>
+				<button class="clear">ok</button>
+			</div>
+		</div>
+
 		<div id="panel">
 			<div id="panel-header">
 				<ul type="none">
@@ -77,42 +86,21 @@
 							<ul type="none" class="themes">
 								<li>
 									<label>
-										<input type="radio" name="theme" checked>
+										<input type="radio" name="theme" id="light" checked>
 										<div>Light</div>
 									</label>
 								</li>
 							
 								<li>
 									<label>
-										<input type="radio" name="theme">
+										<input type="radio" name="theme" id="dark">
 										<div>Dark</div>
 									</label>
 								</li>
-							
-							<li>
-								<label>
-									<input type="radio" name="theme">
-									<div>Matrix</div>
-								</label>
-							</li>
-							
-							<li>
-								<label>
-									<input type="radio" name="theme">
-									<div>Custom</div>
-								</label>
-							</li>
 						</ul>
 					</li>
 					
-					<li>
-						<p>Font size</p>
-						<input type="range" min="1" max="1.5" step=".25">
-					</li>
-					
-					<li id="last-li">
-						<button id="clearAppDataBtn" class="cls">Clear App Data</button>
-					</li>
+					<button id="clearAppDataBtn" class="cls">Clear App Data</button>
 				</ul>
 				</div>
 				
@@ -126,11 +114,32 @@
 							<th>Results</th>
 						</tr>
 					</table>
-					<button id="clearLogs" class="cls">Clear Logs</button>
+
+					<div>
+						<button id="clearLogs" class="cls last-li">Clear Logs</button>
+					</div>
 				</div>
 				
 				<div class="tab">
-					about
+					<table>
+						<caption>About</caption>
+						<tr>
+							<td>Version</td>
+							<td>1.0.0</td>
+						</tr>
+
+						<tr>
+							<td>Developer Contact</td>
+							<td>
+								<ul>
+									<li><a href=""></a></li>
+									<li><a href=""></a></li>
+									<li><a href=""></a></li>
+									<li><a href=""></a></li>
+								</ul>
+							</td>
+						</tr>
+					</table>
 				</div>
 				
 				<div class="tab">
@@ -142,14 +151,15 @@
 	
 	<div id="page">
 		<div id="container">
-			<div id="header">
-				<div id="toast-container">
-				  	<div id="toast">
-				  	<p id="toast-text"></p>
-				  </div>
+			<div id="toast-container">
+				<div id="toast">
+					<p id="toast-text"></p>
 				</div>
-				
-				<div id="time" class="time"></div>
+			</div>
+
+			<div id="time">
+				<div id="d"></div>
+				<div id="t"></div>
 			</div>
 			
 			<div id="screen-wrap">
@@ -201,7 +211,6 @@
 				<button id="clearMemory" style="width: 40%; height: 60px">MC</button>
         	</div>
         	
-        	
         	<div id="sym">
 		    	<button class="symbol" id="dot">.</button>
 		        <button class="symbol" id="add">+</button>
@@ -218,7 +227,6 @@
       
     </div>
   </div>
-  
   
   <script async defer src="./scripts/calculator.js"></script>
   <script async defer src="./scripts/main.js"></script>

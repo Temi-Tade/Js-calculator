@@ -5,7 +5,6 @@ let loadAppData = () => {
 if (localStorage.getItem('calc_app_data') === null) {
 	let calculator = {
 		theme: null,
-		fontSize: null,
 		lastAns: null,
 		displayTime: false,
 		playSound: false,
@@ -20,7 +19,7 @@ if (localStorage.getItem('calc_app_data') === null) {
 	checkTime = () => {
 		let time = document.querySelector('#time')
 		if (state.displayTime === true) {
-			time.style.display = 'block'
+			time.style.visibility = "visible"
 			document.querySelector("#t").innerHTML = `
 				<p>Display time: </p>
 				<label class = "switch">
@@ -29,7 +28,7 @@ if (localStorage.getItem('calc_app_data') === null) {
 				</label>
 			`
 		} else {
-			time.style.display = 'none'
+			time.style.visibility = "hidden"
 			document.querySelector("#t").innerHTML = `
 				<p> Display time: </p>
 				<label class = "switch">
@@ -59,9 +58,24 @@ if (localStorage.getItem('calc_app_data') === null) {
 			`
 		}
 	}
+
+	checkTheme = () => {
+		switch (state.theme) {
+			case "light":
+				document.querySelector("link#custom").href = ""
+				document.querySelector("#light").checked = true
+				break;
+		
+			case "dark":
+				document.querySelector("link#custom").href = "./styles/darkmode.css"
+				document.querySelector("#dark").checked = true
+				break;
+		}
+	}
 	
 	checkTime()
 	checkSound()
+	checkTheme()
 }
 
 let saveAppData = (x) => {
