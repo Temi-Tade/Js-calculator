@@ -8,7 +8,7 @@ let num_sym_btn = document.querySelectorAll('#btns button')
 
 let showSettingsDialog = (x) => {
 	let state = loadAppData()
-		state.times.forEach((val,ind) => {
+		state.inputs.forEach((val,ind) => {
 			document.querySelector("#logs").innerHTML += `
 			<tr>
 				<td>${state.times[ind]}</td>
@@ -30,6 +30,7 @@ let showSettingsDialog = (x) => {
 
 optionBtns.forEach((val, ind) => {
 	val.addEventListener('click', (x) => {
+
 		showSettingsDialog(ind)
 		tabs.forEach((v, i) => {
 			tabs[i].style.display = 'none'
